@@ -4,10 +4,9 @@
     <section id="one">
       <header class="major">
         <h2>
-          <li>
-            {{user}}
+          <li v-for="user in users" :key="user">
+           {{ user.name }}
           </li>
-          go
         </h2>
       </header>
       <p>
@@ -148,17 +147,19 @@ export default {
         }
     },  
     created() {
-        this.getUsers();
+        
     },
     mounted() {
-        // this.ini();
+      axios.get('/info')
+       .then(response => {
+       this.users = response.data;
+          console.log(response.data)
+      }); 
+        // this.getUsers();
     },
     methods: {
-        // ini() 
         getUsers() {
-            axios.get(BASE_URL + "/users/listUsers").then(response => {
-                this.users = response.users;
-            });
+
         }
     },
 }
