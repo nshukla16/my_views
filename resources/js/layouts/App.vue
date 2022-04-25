@@ -1,14 +1,15 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm" style="position: sticky; top: 0; width: 100%; background-color: rgba(55, 61, 73, 0.975);">
+    <nav v-if="!['login', 'registration'].includes($route.name)" class="navbar navbar-expand-md navbar-light bg-black shadow-sm" 
+    style="position: sticky; top: 0; width: 100%; background-color: rgba(55, 61, 73, 0.975);">
       <router-link :to="{ name: 'home' }" class="navbar-brand" style="color:white"><u>myViews</u></router-link>
-      <button
+      <!-- <button
         class="navbar-toggler"
         data-toggle="collapse"
         data-target="#navbarCollapse"
       >
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -32,10 +33,19 @@
               About
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link
+              class="nav-link"
+              data-toggle="collapse"
+              :to="{ name: 'login' }"
+              style="color:white"
+            >
+              Login
+            </router-link>
+          </li>
         </ul>
       </div>
     </nav>
-
     <div class="container">
       <router-view></router-view>
     </div>
@@ -43,15 +53,17 @@
 </template>
 
 <script>
+import 'bootstrap/dist/js/bootstrap.js';
 export default {
   watch: {
     $route() {
-      $("#navbarCollapse").collapse("hide");
+      // $("#navbarCollapse").collapse("hide");
+      
     },
   },
 };
 </script>
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -61,7 +73,7 @@ export default {
 }
 
 nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 nav a {

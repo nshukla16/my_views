@@ -27,4 +27,15 @@ class HomeController extends Controller
         $response = User::all();
         return response()->json($response);
     }
+    public function store(Request $request)
+    {
+        // return view('home');
+        $add = new User;
+        $add->name = $request['name'];
+        $add->email = $request['email'];
+        $add->password = $request['password'];
+        $add->save();
+        $response = 'Success';
+        return response()->json($response);
+    }
 }

@@ -13,14 +13,12 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/{any}', function () {
-//     // return view('welcome');
-//     return view('welcome', ['users' => App\User::all()]);
-// })->where('any', '.*');
-Route::get('/', function () {
+Route::get('{any}', function () {
     return view('welcome');
-});
+    // return view('welcome', ['users' => App\User::all()]);
+})->where('any', '.*');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
-
-Route::get('info', [App\Http\Controllers\HomeController::class, 'index'])/*->name('home')*/;

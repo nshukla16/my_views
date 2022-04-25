@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/info', [App\Http\Controllers\HomeController::class, 'index'])/*->name('home')*/;
+Route::post('/info', [App\Http\Controllers\HomeController::class, 'store'])/*->name('home')*/;

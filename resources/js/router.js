@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
+import login from './pages/login.vue';
+import registration from './pages/registration.vue';
 
 Vue.use(VueRouter);
 
@@ -19,6 +21,16 @@ const router = new VueRouter({
             path: '/about',
             name: 'about',
             component: About
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: login
+        },
+        {
+            path: '/registration',
+            name: 'registration',
+            component: registration
         },
     ]
 });

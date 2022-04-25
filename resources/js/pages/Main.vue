@@ -4,7 +4,7 @@
     <section id="one">
       <header class="major">
         <h2>
-          <li v-for="user in users" :key="user">
+          <li v-for="(user, index) in users" :key="index">
            {{ user.name }}
           </li>
         </h2>
@@ -144,22 +144,23 @@ export default {
     data() {
         return {
             users: [],
+            value1: true,
         }
     },  
     created() {
         
     },
     mounted() {
-      axios.get('/info')
-       .then(response => {
-       this.users = response.data;
-          console.log(response.data)
-      }); 
-        // this.getUsers();
+      
+        this.getUsers();
     },
     methods: {
         getUsers() {
-
+          axios.get('/api/info')
+          .then(response => {
+          this.users = response.data;
+              console.log(response.data)
+          }); 
         }
     },
 }
